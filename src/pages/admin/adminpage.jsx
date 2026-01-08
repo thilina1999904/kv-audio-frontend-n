@@ -5,7 +5,7 @@ import { LuUsers } from "react-icons/lu";
 import { Link, Route, Routes } from "react-router-dom";
 import ItemPage from "./adminItemPage";
 import AddItemPage from "./addItemPage";
-
+import UpdateItemPage from "./updateItemPage";
 export default function AdminPage() {
     return (
         <div className="w-full h-screen flex">
@@ -35,7 +35,9 @@ export default function AdminPage() {
                     <Route path="/bookings" element={<h1>Bookings</h1>} />
                     <Route path="/items" element={<ItemPage />} />
                     <Route path="/items/add" element={<AddItemPage />} />
+                    <Route path="/items/edit" element={<UpdateItemPage />} />
                     <Route path="/users" element={<h1>Users</h1>} />
+                   
                 </Routes>
             </div>
         </div>
