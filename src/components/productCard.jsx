@@ -28,7 +28,7 @@ export default function ProductCard({ item }) {
                 <p className="text-sm text-gray-500  mt-[10px]">
                     Dimensions: {item.dimensions}
                 </p>
-                
+
                 {/* Description */}
                 <p className="text-sm text-gray-600  mt-[10px] line-clamp-2">
                     {item.description}
@@ -36,18 +36,17 @@ export default function ProductCard({ item }) {
 
                 {/* Price */}
                 <p className="text-lg font-bold text-green-600  mt-[10px] flex justify-between">
-                    Rs. {item.price.toLocaleString()}  
+                    Rs. {item.price.toLocaleString()}
                     {/* Availability */}
                     <span
                         className={`px-3 py-1 text-xs font-semibold rounded-full 
                         ${item.availability
-                            ? "bg-green-100 text-green-700"
-                            : "bg-red-100 text-red-700"}`}
+                                ? "bg-green-100 text-green-700"
+                                : "bg-red-100 text-red-700"}`}
                     >
                         {item.availability ? "In Stock" : "Out of Stock"}
                     </span>
                 </p>
-             
 
                 {/* Footer */}
                 <div className="flex justify-between items-center mt-4">
