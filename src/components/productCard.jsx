@@ -47,13 +47,10 @@ export default function ProductCard({ item }) {
                         {item.availability ? "In Stock" : "Out of Stock"}
                     </span>
                 </p>
-
-                
+             
 
                 {/* Footer */}
                 <div className="flex justify-between items-center mt-4">
-
-                  
 
                     {/* Action */}
                     <button className=" w-full text-sm font-medium text-white bg-[#efac38] px-4 py-2 rounded-lg hover:bg-[#e39a20] transition mt-[20px]">
