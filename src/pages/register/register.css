@@ -1,0 +1,16 @@
+.bg-picture{
+    background-image: url('/public/mixer.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+.input-field{
+    width: 300px;
+    height: 30px;
+    margin-top: 20px;
+   background: transparent;
+   border-bottom: 2px solid white;
+}
