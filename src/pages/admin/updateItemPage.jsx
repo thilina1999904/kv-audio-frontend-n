@@ -3,6 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import mediaUpload from "../../../public/utils/mediaUpload";
 export default function UpdateItemPage() {
 
     const location = useLocation();
@@ -15,9 +16,23 @@ export default function UpdateItemPage() {
     const [itemDimensions, setItemDimensions] = useState(location.state.dimensions);
     const [itemDescription, setItemDescription] = useState(location.state.description);
     const navigate = useNavigate();
- 
+    const [itemImages, setItemImages] = useState([]);
 
-    async function handleAddItem() {
+
+    async function handleUpdateItem() {
+
+            let updatingImages = location.state.image;
+
+            if (itemImages.length > 0){
+                const promises = [];
+
+                for (let i = 0; i < itemImages.length; i++) {
+                    const promise = mediaUpload(itemImages[i]);
+                    promises.push(promise);
+                }
+               updatingImages = await Promise.all(promises);   // now contains URLs
+            }
+
         console.log({
             itemKey,
             itemName,
@@ -33,13 +48,16 @@ export default function UpdateItemPage() {
 
         if (token) {
             try {
+
+
                 const result = await axios.put("http://localhost:3000/api/products/" + itemKey, {
                     key: itemKey,
                     name: itemName,
                     price: Number(itemPrice),
                     category: itemCategory,
                     dimensions: itemDimensions,
-                    description: itemDescription
+                    description: itemDescription,
+                    image: updatingImages,
                 }, {
                     headers: {
                         Authorization: "Bearer " + token
@@ -119,11 +137,15 @@ export default function UpdateItemPage() {
                         onChange={(e) => setItemDescription(e.target.value)}
                     />
 
-                    <button onClick={handleAddItem
+                    <input type="file" multiple onChange={(e) => {
+                        setItemImages(e.target.files);
+                    }} />
+
+                    <button onClick={handleUpdateItem
                     } className="mt-2 bg-blue-600 text-white py-2 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-200">
                         Update Item
                     </button>
-                    <button onClick={()=>{
+                    <button onClick={() => {
                         navigate("/admin/items")
                     }} className="mt-2 bg-red-600 text-white py-2 rounded-xl font-semibold hover:bg-red-700 transition-all duration-200">
                         Cancel
