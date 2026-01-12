@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import mediaUpload from "../../../public/utils/mediaUpload";
+import mediaUpload from "../../utils/mediaUpload";
 
 
 export default function AddItemPage() {

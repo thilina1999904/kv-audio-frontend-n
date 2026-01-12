@@ -3,7 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import mediaUpload from "../../../public/utils/mediaUpload";
+import mediaUpload from "../../utils/mediaUpload";
 export default function UpdateItemPage() {
 
     const location = useLocation();

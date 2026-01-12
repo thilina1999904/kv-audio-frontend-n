@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
+
 export default function ProductCard({ item }) {
+
+        const encodedKey = encodeURIComponent(item.key);
+
+
     return (
         <div className="w-[280px] h-[450px] bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
 
@@ -54,9 +59,10 @@ export default function ProductCard({ item }) {
                 <div className="flex justify-between items-center mt-4">
 
                     {/* Action */}
-                    <Link to={"/product/" + item.key} className=" w-full text-sm font-medium text-white bg-[#efac38] px-4 py-2 rounded-lg hover:bg-[#e39a20] transition mt-[20px] text-center">
-                        View Detailsss
+                    <Link to={"/product/" + encodedKey} className=" w-full text-sm font-medium text-white bg-[#efac38] px-4 py-2 rounded-lg hover:bg-[#e39a20] transition mt-[20px] text-center">
+                        View Details
                     </Link>
+
 
                 </div>
             </div>
