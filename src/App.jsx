@@ -9,6 +9,7 @@ import LoginPage from './pages/login/login'
 import RegisterPage from './pages/register/register'
 import { Toaster } from 'react-hot-toast'
 
+
 function App() {
   return (
     <BrowserRouter>
