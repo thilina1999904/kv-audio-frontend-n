@@ -33,21 +33,23 @@ export default function ProductOverview() {
     }, [key])
 
     return (
-        <div className="w-full h-full flex justify-center">
+        <div className="w-full  justify-center pt-5 ">
             {
                 lodingStatus == "loading" &&
-                <div className="w-full h-full flex justify-center items-center">
+                <div className="w-full  flex-col justify-center items-center ">
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-t-accent border-b-2 border-b-accent"></div>
                 </div>
             }
 
             {
                 lodingStatus == "loaded" &&
-                <div className="w-full h-full flex justify-center items-center">
-                    <div className="w-[49%] h-full">
+                <div className="w-full flex flex-col md:flex-row ">
+                    <h1 className="text-2xl font-bold mb md:hidden md:block text-center mb-6 text-accent">{product.name}</h1>
+
+                    <div className="w-full border- p-2 md:w-[49%]">
                         <ImageSlider images={product.image} />
                     </div>
-                    <div className="w-[49%] h-full flex flex-col items-center ">
+                    <div className="w-[full] flex flex-col items-center mt-5  md:w-[49%]">
                         <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.name}</h1>
                         <p className="text-gray-600 mb-4">Category : {product.category}</p>
                         <p className="text-gray-600 mb-4">Description : {product.description}</p>
@@ -56,13 +58,13 @@ export default function ProductOverview() {
 
 
 
-                        <p className="text-lg font-semibold text-green-600">Rs. {product.price.toLocaleString()}</p>
+                        <p className="text-lg font-semibold text-green-600">Rs. {product.price.toFixed(2)}</p>
 
                         <button onClick={() => {
                             addTOCart(product.key, 1);
                             toast.success("Item Added to Cart")
                             console.log(loadCart())
-                        }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold px-6 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                        }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold px-6 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration- mt-3">
                             Add to Cart
                         </button>
                     </div>
