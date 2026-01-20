@@ -53,7 +53,7 @@ export default function LoginPage() {
                 localStorage.setItem("token", res.data.token);
 
                 if (res.data.user.role === "admin") {
-                    navigate("/admin/");
+                    navigate("/admin/dashboard");
                 } else {
                     navigate("/");
                 }
@@ -65,50 +65,64 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="bg-picture w-full h-screen flex justify-center items-center">
-            <form onSubmit={handleOnSubmit}>
-                <div className="w-[500px] h-[500px] backdrop-blur-xl rounded-2xl flex justify-center items-center flex-col">
-
+    <div className="min-h-screen flex items-center justify-center px-4 bg-[var(--color-primary)]">
+            <form onSubmit={handleOnSubmit} className="w-full max-w-md p-8 rounded-2xl shadow-2xl border border-white/20 bg-[var(--color-secondary)]">
+                <div className="flex flex-col items-center mb-6">
                     <img
                         src="/logo.png"
                         alt="logo"
-                        className="w-[200px] h-[200px] object-cover mb-6"
+                        className="w-28 h-28 object-cover mb-2"
                     />
-
-                    <input
-                        type="email"
-                        placeholder="Enter Your Email"
-                        className="w-[300px] h-[40px] bg-transparent border-b-2 border-white text-white text-xl outline-none"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-
-                    <input
-                        type="password"
-                        placeholder="Enter Your Password"
-                        className="w-[300px] h-[40px] bg-transparent border-b-2 border-white text-white text-xl outline-none mt-6"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-
-                    <button
-                        type="submit"
-                        className="w-[300px] h-[50px] bg-[#efac38] text-2xl text-white rounded-lg my-6"
-                    >
-                        Login
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={googleLogin}
-                        className="w-[300px] h-[50px] bg-red-500 text-2xl text-white rounded-lg"
-                    >
-                        Login With Google
-                    </button>
-
+                    <h2 className="text-3xl font-semibold text-[var(--color-accent)]">
+                        Welcome Back
+                    </h2>
+                    <p className="text-sm text-[var(--color-accent)]/70 mt-1">
+                        Login to Continue
+                    </p>
                 </div>
+
+                <input
+                    type="email"
+                    placeholder="Enter Your Email"
+                    className="w-full h-11 bg-transparent border-b-2 border-[var(--color-accent)] text-[var(--color-accent)] text-base outline-none placeholder-[var(--color-accent)]/60"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+
+                <input
+                    type="password"
+                    placeholder="Enter Your Password"
+                    className="w-full h-11 bg-transparent border-b-2 border-[var(--color-accent)] text-[var(--color-accent)] text-base outline-none placeholder-[var(--color-accent)]/60 mt-4"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+
+                <button
+                    type="submit"
+                    className="w-full h-12 mt-6 rounded-xl text-white text-lg font-semibold bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/90 transition"
+                >
+                    Login
+                </button>
+
+                <button
+                    type="button"
+                    onClick={googleLogin}
+                    className="w-full h-12 mt-4 rounded-xl text-white text-lg font-semibold bg-red-500 hover:bg-red-600 transition"
+                >
+                    Login With Google
+                </button>
+
+                <p className="text-center text-[var(--color-accent)]/80 mt-6">
+                    Don't have an account?{" "}
+                    <span
+                        className="text-[var(--color-accent)] font-semibold cursor-pointer hover:underline"
+                        onClick={() => navigate("/register")}
+                    >
+                        Register
+                    </span>
+                </p>
             </form>
         </div>
     );

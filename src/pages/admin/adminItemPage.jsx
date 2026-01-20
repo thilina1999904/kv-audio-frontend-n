@@ -112,71 +112,91 @@ export default function AdminItemPage() {
         }
     };
 
-    return (
-        <div className="w-full min-h-screen p-6 bg-gray-100 flex justify-center">
-            {!loading &&
-                <div className="w-16 h-16 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>}
+    return <div className="w-full min-h-screen p-6 bg-[#F4F6FF] flex flex-col items-center">
+  {!loading && (
+    <div className="flex justify-center items-center h-64">
+      <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  )}
 
+  {loading && (
+    <div className="w-full max-w-6xl bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="flex justify-between items-center px-6 py-4 border-b">
+        <h2 className="text-2xl font-bold text-accent
+        ">Products</h2>
+        <Link
+          to="/admin/items/add"
+          className="hidden sm:flex items-center gap-2 bg-[var(--color-secondary)]  hover:bg-blue-300 text-accent px-4 py-2 rounded-lg shadow-md transition"
+        >
+          <CiCirclePlus className="text-2xl" />
+          Add New Item
+        </Link>
+      </div>
 
+      <div className="overflow-x-auto">
+        <table className="min-w-full">
+          <thead className=" bg-[var(--color-secondary)]  text-accent">
+            <tr>
+              <th className="py-3 px-6 text-left">Key</th>
+              <th className="py-3 px-6 text-left">Name</th>
+              <th className="py-3 px-6 text-left">Price (LKR)</th>
+              <th className="py-3 px-6 text-left">Category</th>
+              <th className="py-3 px-6 text-left">Dimensions</th>
+              <th className="py-3 px-6 text-left">Availability</th>
+              <th className="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
 
-            {loading && <div className="overflow-x-auto top-2">
-                <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-                    <thead className="bg-blue-600 text-white">
-                        <tr>
-                            <th className="py-3 px-6 text-left">Key</th>
-                            <th className="py-3 px-6 text-left">Name</th>
-                            <th className="py-3 px-6 text-left">Price (LKR)</th>
-                            <th className="py-3 px-6 text-left">Category</th>
-                            <th className="py-3 px-6 text-left">Dimensions</th>
-                            <th className="py-3 px-6 text-left">Availability</th>
-                            <th className="py-3 px-6 text-center">Actions</th>
-                        </tr>
-                    </thead>
+          <tbody>
+            {items.map((product) => (
+              <tr
+                key={product.key}
+                className="border-b hover:bg-gray-50 transition-colors"
+              >
+                <td className="py-3 px-6">{product.key}</td>
+                <td className="py-3 px-6">{product.name}</td>
+                <td className="py-3 px-6">{product.price}</td>
+                <td className="py-3 px-6">{product.category}</td>
+                <td className="py-3 px-6">{product.dimensions}</td>
+                <td className="py-3 px-6">
+                  {product.availability ? (
+                    <span className="text-green-600 font-semibold">
+                      Available
+                    </span>
+                  ) : (
+                    <span className="text-red-600 font-semibold">
+                      Not Available
+                    </span>
+                  )}
+                </td>
+                <td className="py-3 px-6 flex justify-center gap-2">
+                  <button
+                    onClick={() =>
+                      navigate(`/admin/items/edit`, { state: product })
+                    }
+                    className="bg-yellow-400 hover:bg-yellow-500 text-white py-1 px-3 rounded-md transition"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(product.key)}
+                    className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md transition"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )}
 
-                    <tbody>
-                        {items.map((product) => (
-                            <tr
-                                key={product.key}
-                                className="border-b hover:bg-gray-50 transition-colors"
-                            >
-                                <td className="py-3 px-6">{product.key}</td>
-                                <td className="py-3 px-6">{product.name}</td>
-                                <td className="py-3 px-6">{product.price}</td>
-                                <td className="py-3 px-6">{product.category}</td>
-                                <td className="py-3 px-6">{product.dimensions}</td>
-                                <td className="py-3 px-6">
-                                    {product.availability ? (
-                                        <span className="text-green-600 font-semibold">
-                                            Available
-                                        </span>
-                                    ) : (
-                                        <span className="text-red-600 font-semibold">
-                                            Not Available
-                                        </span>
-                                    )}
-                                </td>
-                                <td className="py-3 px-6 flex justify-center gap-2">
-                                    <button
-                                        onClick={() => navigate(`/admin/items/edit`,{state:product})}
-                                        className="bg-yellow-400 hover:bg-yellow-500 text-white py-1 px-3 rounded-md transition">
-                                        Edit
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(product.key)}
-                                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md transition"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>}
+  {/* Floating Add Button for Mobile */}
+  <Link to="/admin/items/add">
+    <CiCirclePlus className="text-6xl text-accent fixed right-6 bottom-6 sm:hidden hover:text-yellow-500 hover:text-7xl transition" />
+  </Link>
+</div>
 
-            <Link to="/admin/items/add">
-                <CiCirclePlus className="text-6xl text-blue-600 absolute right-10 bottom-10 hover:text-yellow-500 hover:text-7xl transition" />
-            </Link>
-        </div>
-    );
 }
