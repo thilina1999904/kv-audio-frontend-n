@@ -1,5 +1,5 @@
 import { useState } from "react"
-import mediaUpload from "../../public/utils/mediaUpload";
+import mediaUpload from "../utils/mediaUpload";
 
 
 export default function Testing() {
