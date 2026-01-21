@@ -42,7 +42,7 @@ export default function AddItemPage() {
                 category: itemCategory,
                 dimensions: itemDimensions,
                 description: itemDescription,
-                image: imageUrls,   // real uploaded URLs
+                image: imageUrls,
             }, {
                 headers: {
                     Authorization: "Bearer " + token
@@ -95,9 +95,16 @@ export default function AddItemPage() {
                         value={itemCategory}
                         onChange={(e) => setItemCategory(e.target.value)}
                     >
-                        <option value="audio">Audio</option>
-                        <option value="video">Video</option>
-                        <option value="lights">Lights</option>
+                        <option value="">Select Audio Category</option>
+                        <option value="speakers">Speakers</option>
+                        <option value="subwoofers">Subwoofers</option>
+                        <option value="mixers">Mixers</option>
+                        <option value="microphones">Microphones</option>
+                        <option value="wireless-microphones">Wireless Microphones</option>
+                        <option value="amplifiers">Amplifiers</option>
+                        <option value="dj-equipment">DJ Equipment</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="cables">Cables</option>
                     </select>
 
                     <input
