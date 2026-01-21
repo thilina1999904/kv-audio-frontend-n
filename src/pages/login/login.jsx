@@ -84,7 +84,7 @@ export default function LoginPage() {
                 <input
                     type="email"
                     placeholder="Enter Your Email"
-                    className="w-full h-11 bg-transparent border-b-2 border-[var(--color-accent)] text-[var(--color-accent)] text-base outline-none placeholder-[var(--color-accent)]/60"
+                    className="w-full h-11 bg-transparent border-b-2 border-[var(--color-accent)] text-[var(--color-accent)] text-base outline-none placeholder-[var(--color-accent)]/60 ml-1"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required

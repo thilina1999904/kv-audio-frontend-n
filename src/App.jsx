@@ -9,6 +9,7 @@ import LoginPage from './pages/login/login'
 import RegisterPage from './pages/register/register'
 import { Toaster } from 'react-hot-toast'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import MyOrders from './components/myorder'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin/*" element={<AdminPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+<Route path="/my-orders" element={<MyOrders />} />
         
       </Routes>
     </BrowserRouter>

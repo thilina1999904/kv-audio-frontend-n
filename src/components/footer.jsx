@@ -9,7 +9,7 @@ export default function Footer() {
 
                 {/* 1. Brand Info */}
                 <div className="space-y-6">
-                    <h2 className="text-3xl font-bold tracking-tighter text-center md:text-left">KV AUDIO</h2>
+                    <h2 className="text-3xl font-bold tracking-tighter text-center md:text-left">VEGAZ AUDIO</h2>
                     <p className="text-white/70 leading-relaxed text-center md:text-left">
                         Your premier destination for professional sound equipment in Sri Lanka.
                         We bring the best audio technology to your doorstep.
@@ -83,7 +83,7 @@ export default function Footer() {
 
                         <li className="flex items-center justify-center md:justify-start gap-3">
                             <FaEnvelope className="text-white" />
-                            <span>info@kvaudio.lk</span>
+                            <span>info@vegazaudio@gmail.com</span>
                         </li>
                     </ul>
                 </div>
@@ -91,7 +91,7 @@ export default function Footer() {
 
             {/* Bottom Bar */}
             <div className="max-w-[1400px] mx-auto px-6 mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-sm">
-                <p>&copy; {new Date().getFullYear()} KV AUDIO. All Rights Reserved. Designed by Thilina@Dev.</p>
+                <p>&copy; {new Date().getFullYear()} VEGAZ AUDIO. All Rights Reserved. Designed by Thilina@Dev.</p>
             </div>
         </footer>
     );

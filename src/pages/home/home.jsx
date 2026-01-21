@@ -17,17 +17,17 @@ export default function Home() {
     // Intersection Observer එක setup කිරීම
     const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-    const stats = [
-        { id: 1, number: 1000, suffix: "+", label: "Happy Clients" },
-        { id: 2, number: 50, suffix: "+", label: "Top Brands" },
-        { id: 3, number: 5, suffix: "+", label: "Years Experience" },
-        { id: 4, number: 24, suffix: "/7", label: "Customer Support" },
-    ];
+ const stats = [
+    { id: 1, number: 500, suffix: "+", label: "Events Managed" }, // Changed from "Clients"
+    { id: 2, number: 100, suffix: "+", label: "Gear Inventory" }, // Focus on gear availability
+    { id: 3, number: 5, suffix: "+", label: "Years Experience" },
+    { id: 4, number: 24, suffix: "/7", label: "Technical Support" }, // Crucial for rentals
+];
 
-    const leftFeatures = [
-        { id: 1, title: "Zero Latency", desc: "Real-time audio processing for live recording." },
-        { id: 2, title: "Premium Chassis", desc: "Military-grade steel body for extreme durability." }
-    ];
+   const leftFeatures = [
+    { id: 1, title: "Next-Day Delivery", desc: "Fast delivery to your event venue across Sri Lanka." },
+    { id: 2, title: "Full Setup & Soundcheck", desc: "Our engineers handle the installation and tuning." }
+];
 
     // දකුණු පැත්තේ පෙන්වන විස්තර
     const rightFeatures = [
@@ -47,7 +47,7 @@ export default function Home() {
             id: 1,
             name: "Kasun Perera",
             role: "Music Producer",
-            comment: "The audio quality of the mixers I bought from KV Audio is world-class. Highly recommended!",
+            comment: "The audio quality of the mixers I bought from VEGAZ Audio is world-class. Highly recommended!",
             rating: 5,
             image: "https://i.pravatar.cc/150?u=1"
         },
@@ -81,6 +81,7 @@ export default function Home() {
 
     return (
         <div className="w-full min-h-screen bg-[var(--color-primary)] overflow-x-hidden">
+            
 
             {/* 1. Hero Banner Section */}
             <div className="w-full h-[50vh] sm:h-[60vh] md:h-[80vh] relative overflow-hidden">
@@ -96,7 +97,7 @@ export default function Home() {
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
                     <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-bold drop-shadow-2xl leading-tight">
-                        Welcome to <br className="sm:hidden" /> KV Audio
+                        Welcome to <br className="sm:hidden" /> VEGAZ Audio
                     </h1>
                     <p className="text-white/80 text-xs sm:text-lg md:text-xl mt-3 tracking-[0.2em] uppercase font-light">
                         Experience the Premium Sound
@@ -105,7 +106,7 @@ export default function Home() {
                         onClick={() => navigate("/items")}
                         className="mt-6 sm:mt-8 px-6 py-2.5 sm:px-10 sm:py-3 bg-white text-black text-sm sm:text-base font-bold rounded-full hover:bg-accent hover:text-white transition shadow-xl active:scale-95"
                     >
-                        SHOP NOW
+                        BOOK NOW
                     </button>
                 </div>
 
@@ -117,44 +118,72 @@ export default function Home() {
             </div>
 
             {/* 2. Content Section */}
-            <section className="w-full py-12 md:py-24 px-4 sm:px-8 bg-[var(--color-secondary)]">
-                <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-10 md:gap-16">
-                    <div className="flex-1 text-center lg:text-left space-y-5 md:space-y-8 order-2 lg:order-1">
-                        <div className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold tracking-widest uppercase">
-                            Since 2024
-                        </div>
-                        <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-accent)] leading-tight">
-                            Elevate Your <span className="text-accent">Audio Experience</span>
-                        </h2>
-                        <p className="text-[var(--color-accent)]/70 text-sm sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                            We provide industry-leading sound equipment for home and professional studios.
-                            Our curated selection ensures you hear every detail of your music exactly as intended.
-                        </p>
-                        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
-                            <button
-                                onClick={() => navigate("/items")}
-                                className="px-8 py-3 bg-accent text-white font-bold rounded-xl hover:shadow-lg hover:shadow-accent/30 transition w-full sm:w-auto"
-                            >
-                                Explore Items
-                            </button>
-                            <button onClick={() => navigate("/contact")} className="px-8 py-3 border border-accent text-accent font-bold rounded-xl hover:bg-accent hover:text-white transition w-full sm:w-auto">
-                                Contact Us
-                            </button>
-                        </div>
-                    </div>
+           <section className="w-full py-12 md:py-24 px-4 sm:px-8 bg-[var(--color-secondary)]">
+    <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-10 md:gap-16">
+        
+        {/* Text Content */}
+        <div className="flex-1 text-center lg:text-left space-y-5 md:space-y-8 order-2 lg:order-1">
+            <div className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold tracking-widest uppercase">
+                Premium Event Solutions
+            </div>
+            
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[var(--color-accent)] leading-tight">
+                Professional Sound <br />
+                <span className="text-accent">For Your Next Event</span>
+            </h2>
+            
+            <p className="text-[var(--color-accent)]/70 text-sm sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Don’t just play music—create an atmosphere. We provide high-end sound system rentals 
+                for weddings, corporate events, and live concerts. From crisp vocals to 
+                ground-shaking bass, we bring the concert experience to you.
+            </p>
 
-                    <div className="flex-1 w-full order-1 lg:order-2">
-                        <div className="relative group p-2">
-                            <div className="absolute inset-0 bg-accent rounded-3xl rotate-3 group-hover:rotate-0 transition duration-500 opacity-20"></div>
-                            <img
-                                src={homeImg1}
-                                alt="Studio Setup"
-                                className="relative rounded-3xl shadow-2xl w-full h-[250px] sm:h-[400px] object-cover"
-                            />
-                        </div>
-                    </div>
+            {/* Rental Benefits List */}
+            <ul className="text-[var(--color-accent)]/80 text-sm space-y-2 text-left max-w-fit mx-auto lg:mx-0">
+                <li className="flex items-center gap-2">✅ Professional Delivery & Setup</li>
+                <li className="flex items-center gap-2">✅ On-site Technical Support</li>
+                <li className="flex items-center gap-2">✅ Custom Packages for Any Crowd</li>
+            </ul>
+
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                <button
+                    onClick={() => navigate("/items")}
+                    className="px-8 py-3 bg-accent text-white font-bold rounded-xl hover:shadow-lg hover:shadow-accent/30 transition w-full sm:w-auto uppercase tracking-wider"
+                >
+                    View Rental Gear
+                </button>
+                <button 
+                    onClick={() => navigate("/contact")} 
+                    className="px-8 py-3 border border-accent text-accent font-bold rounded-xl hover:bg-accent hover:text-white transition w-full sm:w-auto"
+                >
+                    Get a Quote
+                </button>
+            </div>
+        </div>
+
+        {/* Image Content */}
+        <div className="flex-1 w-full order-1 lg:order-2">
+            <div className="relative group p-2">
+                {/* Decorative background box */}
+                <div className="absolute inset-0 bg-accent rounded-3xl rotate-3 group-hover:rotate-0 transition duration-500 opacity-20"></div>
+                
+                {/* Image - Ideally should be a photo of a live event or a speaker stack */}
+                <img
+                    src={homeImg1}
+                    alt="Live Event Sound Setup"
+                    className="relative rounded-3xl shadow-2xl w-full h-[300px] sm:h-[450px] object-cover"
+                />
+                
+                {/* Floating Badge */}
+                <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-2xl shadow-xl hidden md:block">
+                    <p className="text-black font-bold text-xl">LKR 1,000+</p>
+                    <p className="text-gray-500 text-xs uppercase font-bold">Starting per day</p>
                 </div>
-            </section>
+            </div>
+        </div>
+
+    </div>
+</section>
 
             {/* 3. Numbered Counters Section */}
             <section ref={ref} className="w-full py-16 bg-accent text-white">
