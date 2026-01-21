@@ -6,11 +6,3 @@ sb_publishable_rnmbFIR19szU2dWYbmKB_w_XPutOBgS
 
 
 
-
-Google login client id
-
-254403227621-g45egel754ovjcqt0mf46eoulrktkvb1.apps.googleusercontent.com
-
-client secret 
-
-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
