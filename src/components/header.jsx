@@ -29,17 +29,15 @@ export default function Header() {
                         </Link>
                     </div>
 
-                    {/* 2. Desktop Navigation (හරියටම Screen එකේ මැදට එනවා) */}
                     <nav className="hidden md:flex gap-8 text-[17px] font-semibold uppercase tracking-wide">
                         <NavLink to="/" className={activeLinkStyle}>Home</NavLink>
                         <NavLink to="/items" className={activeLinkStyle}>Items</NavLink>
-                        {/* පාරිභෝගිකයාට ඇණවුම් බැලීමට My Bookings ලින්ක් එක මෙතනට දාන්න පුළුවන් */}
                         <NavLink to="/my-orders" className={activeLinkStyle}>My Bookings</NavLink> 
                         <NavLink to="/gallery" className={activeLinkStyle}>Gallery</NavLink>
                         <NavLink to="/contact" className={activeLinkStyle}>Contact</NavLink>
                     </nav>
 
-                    {/* 3. Auth Buttons Section (Flex-1 දාලා දකුණට කළා) */}
+                 
                     <div className="hidden md:flex flex-1 items-center justify-end gap-4">
                         <Link to="/login" className="px-4 py-1.5 rounded-lg border border-white hover:bg-white hover:text-accent transition font-medium">
                             Login
