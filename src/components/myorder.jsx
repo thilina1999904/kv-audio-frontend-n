@@ -41,13 +41,13 @@ export default function MyOrders() {
                 {/* Background Image with Overlay */}
                 <div 
                     className="absolute inset-0 bg-cover bg-center z-0 h-[400px]" 
-                    style={{ backgroundImage: "url('/src/assets/gallery/4.jpg')", opacity: '2' }} // ඔයාගේ image path එක දාන්න
+                    style={{ backgroundImage: "url('/src/assets/gallery/4.jpg')", opacity: '2' }} 
                 ></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-primary)] z-10"></div>
 
                 {/* Content */}
                 <div className="relative z-20 text-center px-4">
-                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white">
+                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-[var(--color-accent)] ">
                         My <span className="text-[var(--color-accent)] animate-pulse">Bookings</span>
                     </h1>
                     <p className="text-gray-300 mt-2 max-w-lg mx-auto text-sm md:text-base">

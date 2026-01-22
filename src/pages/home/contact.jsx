@@ -62,7 +62,7 @@ export default function Contact() {
                     <a
                         key={idx}
                         href={item.link}
-                        className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-[var(--color-accent)] transition-all duration-300 flex flex-col justify-center h-full"
+                        className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-[var(--color-accent)] transition-all duration-300 flex flex-col justify-center h-full items-center md:items-start"
                     >
                         <div className="w-12 h-12 mb-4 rounded-xl bg-[var(--color-secondary)] text-[var(--color-accent)] flex items-center justify-center text-xl group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors">
                             {item.icon}
