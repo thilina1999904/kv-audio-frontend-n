@@ -17,7 +17,7 @@ export default function ProductOverview() {
 
     useEffect(() => {
         const decodedKey = decodeURIComponent(key);
-        axios.get("http://localhost:3000/api/products/" + decodedKey)
+        axios.get("/api/products/" + decodedKey)
             .then((res) => {
                 setProduct(res.data);
                 setLodingStatus("loaded");

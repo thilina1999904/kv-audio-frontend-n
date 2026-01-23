@@ -47,7 +47,7 @@ export default function BookingPage() {
             return;
         }
 
-        axios.post("http://localhost:3000/api/orders/quote", {
+        axios.post("/api/orders/quote", {
             orderedItems: cartInfo.orderedItems,
             days: totalDays
         })
@@ -88,7 +88,7 @@ export default function BookingPage() {
             return;
         }
 
-        axios.post("http://localhost:3000/api/orders", cartData, {
+        axios.post("/api/orders", cartData, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(() => {
             localStorage.removeItem("cart");

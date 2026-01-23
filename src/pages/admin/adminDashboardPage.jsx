@@ -16,7 +16,7 @@ export default function AdminDashBoardPage() {
 
     useEffect(() => {
         // 1. Dashboard Stats ලබා ගැනීම
-        axios.get("http://localhost:3000/api/admin/dashboard")
+        axios.get("/api/admin/dashboard")
             .then((res) => {
                 setStats({
                     totalUsers: res.data.totalUsers || 0,
@@ -28,8 +28,8 @@ export default function AdminDashBoardPage() {
             .catch((err) => console.error("Dashboard Fetch Error:", err));
 
         // 2. Recent Orders ලබා ගැනීම
-        // සටහන: ඔබේ Backend එකේ 'http://localhost:3000/api/orders' route එක තිබිය යුතුය
-        axios.get("http://localhost:3000/api/orders") 
+        // සටහන: ඔබේ Backend එකේ '/api/orders' route එක තිබිය යුතුය
+        axios.get("/api/orders") 
             .then((res) => {
                 // අලුත්ම orders 5ක් පමණක් පෙන්වීමට slice(0, 5) පාවිච්චි කළ හැක
                 setOrders(res.data.slice(0, 5)); 

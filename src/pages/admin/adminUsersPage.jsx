@@ -12,7 +12,7 @@ export default function AdminUsersPage() {
         setLoading(true);
 
         axios
-            .get("http://localhost:3000/api/users/all", {
+            .get("/api/users/all", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -45,7 +45,7 @@ export default function AdminUsersPage() {
 
         axios
             .put(
-                `http://localhost:3000/api/users/block/${email}`, // ✅ Email as URL param
+                `/api/users/block/${email}`, // ✅ Email as URL param
                 {}, // ✅ Empty body
                 {
                     headers: {

@@ -12,7 +12,7 @@ export default function AdminOrdersPage() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:3000/api/orders/", {
+      .get("/api/orders/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -45,7 +45,7 @@ export default function AdminOrdersPage() {
 
     axios
       .put(
-        `http://localhost:3000/api/orders/${orderId}/approve`,
+        `/api/orders/${orderId}/approve`,
         {},
         {
           headers: {
@@ -70,7 +70,7 @@ export default function AdminOrdersPage() {
 
     axios
       .put(
-        `http://localhost:3000/api/orders/${orderId}/decline`,
+        `/api/orders/${orderId}/decline`,
         {},
         {
           headers: {

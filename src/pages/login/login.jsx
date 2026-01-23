@@ -15,7 +15,7 @@ export default function LoginPage() {
         onSuccess: async (tokenResponse) => {
             try {
                 const res = await axios.post(
-                    "http://localhost:3000/api/users/google",
+                    "/api/users/google",
                     {
                         accessToken: tokenResponse.access_token,
                     }
@@ -44,7 +44,7 @@ export default function LoginPage() {
         e.preventDefault();
 
         axios
-            .post("http://localhost:3000/api/users/login", {
+            .post("/api/users/login", {
                 email,
                 password,
             })

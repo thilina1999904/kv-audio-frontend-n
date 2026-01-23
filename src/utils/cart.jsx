@@ -11,43 +11,33 @@ export function loadCart() {
         localStorage.setItem("cart", cartString);
         return cart;
     }
-    cart = JSON.parse(cart);
-    return cart;
+    return JSON.parse(cart);
 }
-
 
 export function addTOCart(key, qty) {
     const cart = loadCart();
-    let found =false;
+    let found = false;
     for (let i = 0; i < cart.orderedItems.length; i++) {
         if (cart.orderedItems[i].key == key) {
             cart.orderedItems[i].qty += qty;
             found = true;
         }
     }
-    if(!found){
-        cart.orderedItems.push({key,qty});
+    if (!found) {
+        cart.orderedItems.push({ key, qty });
     }
-    const cartString = JSON.stringify(cart);
-    localStorage.setItem("cart",cartString);
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-export function removefromCart(key){
+export function removefromCart(key) {
     const cart = loadCart();
-    const newCart = cart.orderedItems.filter((item)=>item.key != key);
-    cart.orderedItems = newCart;
-    const cartString = JSON.stringify(cart);
-    localStorage.setItem("cart",cartString);
-
+    cart.orderedItems = cart.orderedItems.filter((item) => item.key != key);
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
-
-
-
 
 function formatDate(date) {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // months start from 0
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
     const day = String(date.getDate()).padStart(2, '0');
-
     return `${year}-${month}-${day}`;
 }

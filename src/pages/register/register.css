@@ -1,5 +1,5 @@
 .bg-picture{
-    background-image: url('/public/mixer.jpg');
+    background-image: url('http://localhost:3000publichttp://localhost:3000mixer.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

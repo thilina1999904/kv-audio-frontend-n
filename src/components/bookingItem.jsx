@@ -9,7 +9,7 @@ export default function BookingItem({ itemKey, qty, refresh }) {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/api/products/" + itemKey)
+            .get("/api/products/" + itemKey)
             .then((res) => {
                 setItem(res.data);
                 setStatus("success");

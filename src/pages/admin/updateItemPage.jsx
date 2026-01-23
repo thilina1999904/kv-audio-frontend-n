@@ -50,7 +50,7 @@ export default function UpdateItemPage() {
             try {
 
 
-                const result = await axios.put("http://localhost:3000/api/products/" + itemKey, {
+                const result = await axios.put("/api/products/" + itemKey, {
                     key: itemKey,
                     name: itemName,
                     price: Number(itemPrice),

@@ -1,13 +1,13 @@
-import js from '@eslint/js'
+import js from '@eslinthttp://localhost:3000js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import { defineConfig, globalIgnores } from 'eslinthttp://localhost:3000config'
 
 export default defineConfig([
   globalIgnores(['dist']),
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**http://localhost:3000*.{js,jsx}'],
     extends: [
       js.configs.recommended,
       reactHooks.configs.flat.recommended,
