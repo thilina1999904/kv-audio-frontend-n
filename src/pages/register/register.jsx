@@ -17,7 +17,7 @@ export default function RegisterPage() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        axios.post("http://localhost:3000/api/users", {
+        axios.post("/api/users", {
             email: email,
             firstName: firstName,
             lastName: lastName,

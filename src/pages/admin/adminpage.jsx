@@ -30,7 +30,7 @@ export default function AdminPage() {
             return;
         }
 
-        axios.get("http://localhost:3000/api/users/me", {
+        axios.get("/api/users/me", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

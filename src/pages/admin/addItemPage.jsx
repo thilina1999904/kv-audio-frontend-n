@@ -35,7 +35,7 @@ export default function AddItemPage() {
 
             const imageUrls = await Promise.all(promises);   // now contains URLs
 
-            const result = await axios.post("http://localhost:3000/api/products", {
+            const result = await axios.post("/api/products", {
                 key: itemKey,
                 name: itemName,
                 price: Number(itemPrice),

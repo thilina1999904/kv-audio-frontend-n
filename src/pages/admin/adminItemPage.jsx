@@ -79,7 +79,7 @@ export default function AdminItemPage() {
     useEffect(() => {
         if (!loading) {
             axios
-                .get("http://localhost:3000/api/products", {
+                .get("/api/products", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -99,7 +99,7 @@ export default function AdminItemPage() {
         if (window.confirm("Are you sure you want to delete this item?")) {
             // Call API to delete item
             axios
-                .delete(`http://localhost:3000/api/products/${key}`, {
+                .delete(`/api/products/${key}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

@@ -10,7 +10,7 @@ export default function Items() {
 
     useEffect(() => {
         if (state === "loading") {
-            axios.get("http://localhost:3000/api/products")
+            axios.get("/api/products")
                 .then((res) => {
                     setItems(res.data);
                     setState("success");
