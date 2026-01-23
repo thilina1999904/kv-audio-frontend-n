@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FaCartShopping, FaUser, FaArrowRightToBracket, FaUserPlus, FaArrowRightFromBracket } from "react-icons/fa6"; // අලුත් Icons
+import { FaCartShopping, FaUser, FaArrowRightToBracket, FaUserPlus, FaArrowRightFromBracket } from "react-icons/fa6"; 
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink, Link, useNavigate } from "react-router-dom"; // useNavigate එකතු කළා
+import { NavLink, Link, useNavigate } from "react-router-dom"; 
 import MobileNavPanel from "./mobileNavPanel";
 
 export default function Header() {
@@ -13,10 +13,10 @@ export default function Header() {
 
     // Logout Function එක
     const handleLogout = () => {
-        localStorage.removeItem("token"); // Token එක අයින් කරන්න
-        // වෙනත් user data තියෙනවා නම් ඒවාත් මෙතනදී අයින් කරන්න (උදා: localStorage.removeItem("user"))
-        navigate("/login"); // Login page එකට යවන්න
-        window.location.reload(); // UI එක update වෙන්න refresh කරන්න
+        localStorage.removeItem("token"); 
+        // වෙනත් user data තියෙනවා නම් ඒවාත් මෙතනදී අයින් කරන්න
+        navigate("/login"); 
+        window.location.reload(); 
     };
 
     const activeLinkStyle = ({ isActive }) => 
@@ -43,7 +43,7 @@ export default function Header() {
                         </Link>
                     </div>
 
-                    {/* 2. Middle Navigation */}
+                    {/* 2. Middle Navigation (Desktop) */}
                     <nav className="hidden md:flex items-center gap-4 lg:gap-8 font-semibold uppercase">
                         <NavLink to="/" className={activeLinkStyle}>Home</NavLink>
                         <NavLink to="/items" className={activeLinkStyle}>Items</NavLink>
@@ -52,12 +52,11 @@ export default function Header() {
                         <NavLink to="/contact" className={activeLinkStyle}>Contact</NavLink>
                     </nav>
 
-                    {/* 3. Auth & Cart Section (Icons පමණක් පාවිච්චි කර ඇත) */}
+                    {/* 3. Auth & Cart Section (Desktop) */}
                     <div className="hidden md:flex items-center gap-3 lg:gap-5">
                         <div className="flex items-center gap-4 border-r border-white/20 pr-4">
                             {!token ? (
                                 <>
-                                    {/* Log වෙලා නැත්නම් Login/Register පෙන්වන්න */}
                                     <Link to="/login" title="Login" className="text-xl hover:text-gray-300 transition">
                                         <FaArrowRightToBracket />
                                     </Link>
@@ -66,7 +65,6 @@ export default function Header() {
                                     </Link>
                                 </>
                             ) : (
-                                /* Log වෙලා ඉන්නවා නම් Logout Icon එක පෙන්වන්න */
                                 <button 
                                     onClick={handleLogout} 
                                     title="Logout" 
@@ -85,12 +83,30 @@ export default function Header() {
                         </Link>
                     </div>
 
-                    {/* 4. Mobile Controls */}
+                    {/* 4. Mobile Controls (මෙතන තමයි වෙනස්කම් සිදු කළේ) */}
                     <div className="md:hidden flex items-center gap-4">
-                        {token && (
-                             <button onClick={handleLogout} className="text-[20px] text-red-400"><FaArrowRightFromBracket /></button>
+                        {!token ? (
+                            <div className="flex items-center gap-3">
+                                <Link to="/login" className="text-[20px] hover:text-gray-300 transition">
+                                    <FaArrowRightToBracket />
+                                </Link>
+                                <Link to="/register" className="text-[20px] hover:text-gray-300 transition">
+                                    <FaUserPlus />
+                                </Link>
+                            </div>
+                        ) : (
+                            <button 
+                                onClick={handleLogout} 
+                                className="text-[20px] text-red-400"
+                            >
+                                <FaArrowRightFromBracket />
+                            </button>
                         )}
-                        <Link to="/booking" className="text-[20px] p-2 hover:bg-white/10 rounded-full transition"><FaCartShopping /></Link>
+
+                        <Link to="/booking" className="text-[20px] p-2 hover:bg-white/10 rounded-full transition">
+                            <FaCartShopping />
+                        </Link>
+
                         <button 
                             onClick={() => setNavPanelOpen(true)}
                             className="p-2 hover:bg-white/10 rounded-lg transition"
