@@ -27,11 +27,29 @@ export default function ProductOverview() {
             });
     }, [key]);
 
+    const handleAddToCart = () => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            // Log වී නැත්නම් Login පිටුවට යවන්න
+            toast.error("Please login to add items to cart");
+            navigate("/login");
+            return;
+        }
+
+        // Cart එකට එකතු කිරීම
+        addTOCart(product.key, 1);
+        toast.success(`${product.name} added to cart!`);
+
+        // --- භාණ්ඩය එකතු කළ සැනින් Cart (Booking) පිටුවට Redirect කිරීම ---
+        navigate("/booking");
+    };
+
     return (
         <div className="w-full min-h-screen bg-[var(--color-primary)] py-6 md:py-10 px-4 md:px-10 max-w-[1400px] m-auto">
-            
+
             {/* 1. Back Button */}
-            <button 
+            <button
                 onClick={() => navigate("/items")}
                 className="flex items-center gap-2 text-[var(--color-accent)] font-semibold mb-6 hover:opacity-70 transition text-sm md:text-base"
             >
@@ -49,7 +67,7 @@ export default function ProductOverview() {
             {/* 3. Product Content */}
             {lodingStatus === "loaded" && (
                 <div className="max-w-[1200px] mx-auto bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-gray-50 overflow-hidden flex flex-col md:flex-row">
-                    
+
                     {/* Left Side: Image Slider Section */}
                     <div className="w-full md:w-1/2 bg-[var(--color-secondary)]/10 p-4 md:p-10 flex items-center justify-center">
                         <div className="w-full max-w-[500px] aspect-square md:aspect-auto h-[300px] sm:h-[400px] md:h-full rounded-2xl overflow-hidden shadow-inner bg-white flex items-center justify-center">
@@ -59,7 +77,7 @@ export default function ProductOverview() {
 
                     {/* Right Side: Details Section */}
                     <div className="w-full md:w-1/2 p-6 md:p-12 lg:p-16 flex flex-col">
-                        
+
                         {/* Category Tag */}
                         <div className="mb-3">
                             <span className="bg-[var(--color-secondary)] text-[var(--color-accent)] px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
@@ -108,11 +126,8 @@ export default function ProductOverview() {
                                 </div>
                             </div>
 
-                            <button 
-                                onClick={() => {
-                                    addTOCart(product.key, 1);
-                                    toast.success(`${product.name} added to cart!`);
-                                }} 
+                            <button
+                                onClick={handleAddToCart}
                                 className="w-full sm:w-auto flex items-center justify-center gap-3 bg-[var(--color-accent)] hover:bg-[#1a4d80] text-white font-black px-8 py-4 rounded-2xl shadow-lg hover:shadow-[var(--color-accent)]/40 transition-all active:scale-95"
                             >
                                 <FaCartPlus /> ADD TO CART
@@ -127,7 +142,7 @@ export default function ProductOverview() {
             {lodingStatus === "error" && (
                 <div className="w-full h-[60vh] flex flex-col justify-center items-center text-center">
                     <h1 className="text-xl font-bold text-gray-800">Oops! Product not found</h1>
-                    <button 
+                    <button
                         onClick={() => navigate("/items")}
                         className="mt-4 bg-[var(--color-accent)] text-white px-6 py-2 rounded-full font-bold"
                     >
