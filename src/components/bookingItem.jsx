@@ -9,7 +9,7 @@ export default function BookingItem({ itemKey, qty, refresh }) {
 
     useEffect(() => {
         axios
-            .get("/api/products/" + itemKey)
+            .get("http://localhost:3000/api/products/" + itemKey)
             .then((res) => {
                 setItem(res.data);
                 setStatus("success");
@@ -63,19 +63,21 @@ export default function BookingItem({ itemKey, qty, refresh }) {
 
     return (
         <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-200 hover:shadow-xl my-4">
-            <div className="flex gap-4 p-5">
-                {/* Image */}
-                <div className="flex-shrink-0">
+            {/* Added flex-col for mobile, flex-row for tablet up */}
+            <div className="flex flex-col sm:flex-row gap-4 p-4 sm:p-5 relative">
+                
+                {/* Image - Centered on mobile */}
+                <div className="flex-shrink-0 flex justify-center sm:block">
                     <img
                         src={item.image?.[0]}
                         alt={item.name}
-                        className="w-35 h-40 object-cover rounded-lg border border-gray-200"
+                        className="w-full sm:w-32 h-48 sm:h-40 object-cover rounded-lg border border-gray-200"
                     />
                 </div>
 
                 {/* Details */}
-                <div className="flex flex-col flex-grow gap-2">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                <div className="flex flex-col flex-grow gap-1 sm:gap-2">
+                    <h3 className="text-lg font-semibold text-gray-900 pr-8 sm:pr-0">
                         {item.name}
                     </h3>
 
@@ -91,8 +93,8 @@ export default function BookingItem({ itemKey, qty, refresh }) {
                         Rs. {item.price.toFixed(2)}
                     </p>
 
-                    {/* Quantity Controls */}
-                    <div className="flex items-center gap-4 mt-2">
+                    {/* Quantity Controls & Total - Stacked on tiny screens, side-by-side on larger */}
+                    <div className="flex flex-wrap items-center gap-4 mt-3">
                         <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-3 py-2">
                             <button
                                 onClick={handleDecrement}
@@ -121,15 +123,15 @@ export default function BookingItem({ itemKey, qty, refresh }) {
                     </div>
                 </div>
 
-                {/* Remove Button */}
-                <div className="flex-shrink-0 flex items-start">
+                {/* Remove Button - Absolute on mobile for cleaner look, normal on desktop */}
+                <div className="absolute top-4 right-4 sm:relative sm:top-0 sm:right-0 flex-shrink-0 flex items-start">
                     <button
                         onClick={handleRemove}
-                        className="px-4 py-2 text-sm rounded-lg bg-red-500 text-white hover:bg-red-600 transition-colors duration-200 flex items-center gap-2 shadow-sm"
+                        className="p-2 sm:px-4 sm:py-2 text-sm rounded-lg bg-red-500 text-white hover:bg-red-600 transition-colors duration-200 flex items-center gap-2 shadow-sm"
                         aria-label="Remove item"
                     >
                         <FaTrash size={12} />
-                        Remove
+                        <span className="hidden sm:inline">Remove</span>
                     </button>
                 </div>
             </div>
