@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaCheckCircle, FaHourglassHalf, FaTimesCircle, FaBox, FaHistory } from "react-icons/fa";
-// ඔයාගේ Header සහ Footer මෙතනට import කරගන්න
 import Header from "../components/header"
 import Footer from "../components/footer";
-import banner from "../assets/gallery/4.jpg";
+import banner from "../assets/gallery/5.jpg";
 
 export default function MyOrders() {
     const [orders, setOrders] = useState([]);
@@ -15,14 +14,14 @@ export default function MyOrders() {
         axios.get("/api/orders", {
             headers: { Authorization: `Bearer ${token}` }
         })
-        .then(res => {
-            setOrders(res.data);
-            setLoading(false);
-        })
-        .catch(err => {
-            console.error(err);
-            setLoading(false);
-        });
+            .then(res => {
+                setOrders(res.data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            });
     }, []);
 
     const getStatus = (order) => {
@@ -39,15 +38,18 @@ export default function MyOrders() {
             {/* 2. Banner Section */}
             <div className="w-full h-[450px] relative flex items-center justify-center">
                 {/* Background Image with Overlay */}
-                <div 
-                    className="absolute inset-0 bg-cover bg-center z-0 h-[400px]" 
-                    style={{ backgroundImage: "url('/src/assets/gallery/4.jpg')", opacity: '2' }} // ඔයාගේ image path එක දාන්න
+                <div
+                    className="absolute inset-0 bg-cover bg-center z-0 h-[400px]"
+                    style={{
+                        backgroundImage: `url(${banner})`,
+                        opacity: '1'
+                    }}
                 ></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-primary)] z-10"></div>
+              <div className="absolute inset-0 bg-black/60 z-10 h-[400px]"></div>
 
                 {/* Content */}
                 <div className="relative z-20 text-center px-4">
-                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white">
+                    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-[var(--color-accent)]">
                         My <span className="text-[var(--color-accent)] animate-pulse">Bookings</span>
                     </h1>
                     <p className="text-gray-300 mt-2 max-w-lg mx-auto text-sm md:text-base">
@@ -78,7 +80,7 @@ export default function MyOrders() {
                                                 {new Date(order.startingDate).toLocaleDateString()} - {new Date(order.endDate).toLocaleDateString()}
                                             </h3>
                                             <p className="text-sm text-gray-400 mt-1">
-                                                <span className="text-[var(--color-accent)] font-semibold">{order.orderedItems.length}</span> Items • 
+                                                <span className="text-[var(--color-accent)] font-semibold">{order.orderedItems.length}</span> Items •
                                                 <span className=" text-[var(--color-accent)]  ml-1">LKR {order.totalAmount.toLocaleString()}</span>
                                             </p>
                                         </div>
