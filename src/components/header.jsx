@@ -8,13 +8,13 @@ export default function Header() {
     const [navPanelOpen, setNavPanelOpen] = useState(false);
     const navigate = useNavigate();
     
-    // User Log වෙලාද කියලා බලන්න token එක ගන්න
+    
     const token = localStorage.getItem("token");
 
-    // Logout Function එක
+
     const handleLogout = () => {
         localStorage.removeItem("token"); 
-        // වෙනත් user data තියෙනවා නම් ඒවාත් මෙතනදී අයින් කරන්න
+       
         navigate("/login"); 
         window.location.reload(); 
     };
@@ -31,7 +31,7 @@ export default function Header() {
             <header className="w-full shadow-lg bg-accent text-white sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
                 <div className="max-w-[1400px] mx-auto h-[70px] flex items-center justify-between px-4 lg:px-8">
                     
-                    {/* 1. Logo Section */}
+                  
                     <div className="flex items-center shrink-0">
                         <Link to="/" className="flex items-center gap-2 group">
                             <img
@@ -39,7 +39,7 @@ export default function Header() {
                                 alt="Logo"
                                 className="w-[45px] h-[45px] md:w-[55px] md:h-[55px] rounded-full object-cover border-2 border-white/20 group-hover:border-white transition-all"
                             />
-                            <span className="hidden sm:block font-black text-xl tracking-tighter">KV AUDIO</span>
+                            <span className="hidden sm:block font-black text-xl tracking-tighter">VEGAZ AUDIO</span>
                         </Link>
                     </div>
 
